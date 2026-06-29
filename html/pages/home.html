@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SIPRAS-FIP</title>
+    <base target="_top" />
+    <?!= include('html/components/styles'); ?>
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="top-nav">
+        <div class="brand">SIPRAS-FIP</div>
+        <a class="nav-link" href="?route=admin">Admin Dashboard</a>
+      </nav>
+      <div class="hero-content">
+        <h1>Manajemen Sarana & Prasarana FIP</h1>
+        <p>Integrasi data gedung, lokal, fasilitas, inventaris, pemeriksaan, dan jadwal penggunaan dalam satu platform.</p>
+        <a class="button primary" href="?route=admin">Lihat Dashboard</a>
+      </div>
+    </header>
+
+    <main class="content-grid">
+      <section class="card">
+        <h2>Informasi Utama</h2>
+        <p>Platform ini membantu fakultas mengelola sarana dan prasarana secara terpusat, cepat, dan akurat.</p>
+      </section>
+      <section class="card">
+        <h2>Fitur MVP</h2>
+        <ul>
+          <li>Dokumentasi gedung dan lokal</li>
+          <li>Daftar fasilitas dan inventaris</li>
+          <li>Pemeriksaan fasilitas</li>
+          <li>Jadwal penggunaan lokal</li>
+          <li>Dashboard monitoring</li>
+        </ul>
+      </section>
+    </main>
+    <?!= include('html/components/scripts'); ?>
+  </body>
+</html>
