@@ -1,41 +1,56 @@
-<!DOCTYPE html>
-<html lang="id">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SIPRAS-FIP</title>
-    <base target="_top" />
-    <?!= include('html/components/styles'); ?>
-  </head>
-  <body>
-    <header class="hero">
-      <nav class="top-nav">
-        <div class="brand">SIPRAS-FIP</div>
-        <a class="nav-link" href="?route=admin">Admin Dashboard</a>
-      </nav>
-      <div class="hero-content">
-        <h1>Manajemen Sarana & Prasarana FIP</h1>
-        <p>Integrasi data gedung, lokal, fasilitas, inventaris, pemeriksaan, dan jadwal penggunaan dalam satu platform.</p>
-        <a class="button primary" href="?route=admin">Lihat Dashboard</a>
+<section class="hero-section">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Fakultas Ilmu Pendidikan</p>
+      <h1>SIPRAS-FIP</h1>
+      <p class="hero-lead">
+        Sistem Informasi Sarana dan Prasarana untuk mendukung pengelolaan data fasilitas kampus secara terpusat, rapi, dan mudah dikembangkan.
+      </p>
+      <div class="hero-actions" aria-label="Aksi utama">
+        <a class="button button--primary" href="?page=dashboard">Buka Dashboard</a>
+        <a class="button button--secondary" href="#tentang">Tentang SIPRAS</a>
       </div>
-    </header>
+    </div>
+    <div class="hero-panel" aria-label="Ringkasan platform">
+      <div class="hero-panel__mark">FIP</div>
+      <p>Sarana</p>
+      <p>Prasarana</p>
+      <p>Monitoring</p>
+    </div>
+  </div>
+</section>
 
-    <main class="content-grid">
-      <section class="card">
-        <h2>Informasi Utama</h2>
-        <p>Platform ini membantu fakultas mengelola sarana dan prasarana secara terpusat, cepat, dan akurat.</p>
-      </section>
-      <section class="card">
-        <h2>Fitur MVP</h2>
-        <ul>
-          <li>Dokumentasi gedung dan lokal</li>
-          <li>Daftar fasilitas dan inventaris</li>
-          <li>Pemeriksaan fasilitas</li>
-          <li>Jadwal penggunaan lokal</li>
-          <li>Dashboard monitoring</li>
-        </ul>
-      </section>
-    </main>
-    <?!= include('html/components/scripts'); ?>
-  </body>
-</html>
+<section class="section" id="tentang">
+  <div class="container section-grid">
+    <div>
+      <p class="eyebrow">Tentang</p>
+      <h2>Tentang SIPRAS-FIP</h2>
+    </div>
+    <p>
+      SIPRAS-FIP disiapkan sebagai aplikasi berbasis Google Apps Script untuk membantu Fakultas Ilmu Pendidikan Universitas Negeri Padang mengelola informasi sarana dan prasarana secara digital.
+    </p>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Fondasi</p>
+      <h2>Fitur Utama</h2>
+    </div>
+    <div class="feature-grid">
+      <article class="feature-card">
+        <h3>Data Terpusat</h3>
+        <p>Struktur aplikasi disiapkan untuk menyatukan data gedung, lokal, fasilitas, inventaris, pemeriksaan, dan jadwal.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Monitoring</h3>
+        <p>Dashboard menjadi area kerja administrator untuk pemantauan dan pengembangan modul berikutnya.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Siap Berkembang</h3>
+        <p>Layout, komponen, CSS, dan JavaScript dibuat modular agar mudah dipelihara pada tahap lanjutan.</p>
+      </article>
+    </div>
+  </div>
+</section>

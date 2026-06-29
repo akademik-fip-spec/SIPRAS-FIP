@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><?= appTitle ?></title>
+    <base target="_top" />
+    <?!= include('html/components/styles'); ?>
+  </head>
+  <body data-page="<?= currentPage ?>">
+    <div class="app-shell">
+      <?!= include('html/components/header'); ?>
+      <? if (currentPage === 'dashboard') { ?>
+        <div class="dashboard-shell">
+          <?!= include('html/components/sidebar'); ?>
+          <main class="app-main app-main--dashboard" id="main-content">
+            <?!= pageContent ?>
+          </main>
+        </div>
+      <? } else { ?>
+        <main class="app-main" id="main-content">
+          <?!= pageContent ?>
+        </main>
+      <? } ?>
+      <?!= include('html/components/footer'); ?>
+    </div>
+    <?!= include('html/components/scripts'); ?>
+  </body>
+</html>

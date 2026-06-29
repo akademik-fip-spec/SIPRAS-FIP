@@ -7,19 +7,36 @@
 function doGet(e) {
   initializeDatabase();
 
-  return renderPage('html/pages/' + Config.DEFAULT_PAGE);
+  const page = getRequestedPage(e);
+  return renderPage(page);
 }
 
 /**
- * Renders an HTML template.
+ * Resolves the requested UI page.
  *
- * @param {string} pageName Template path without extension.
+ * @param {GoogleAppsScript.Events.DoGet} e Request event.
+ * @return {string} Page key.
+ */
+function getRequestedPage(e) {
+  const page = e && e.parameter && e.parameter.page ? e.parameter.page : Config.DEFAULT_PAGE;
+  const allowedPages = ['home', 'dashboard'];
+
+  return allowedPages.indexOf(page) === -1 ? Config.DEFAULT_PAGE : page;
+}
+
+/**
+ * Renders the main HTML layout.
+ *
+ * @param {string} page Page key.
  * @return {GoogleAppsScript.HTML.HtmlOutput} Rendered page.
  */
-function renderPage(pageName) {
-  const template = HtmlService.createTemplateFromFile(pageName);
+function renderPage(page) {
+  const template = HtmlService.createTemplateFromFile('html/layouts/main');
   template.appTitle = Config.APP_NAME;
+  template.appVersion = Config.APP_VERSION;
   template.currentYear = new Date().getFullYear();
+  template.currentPage = page;
+  template.pageContent = include('html/pages/' + page);
 
   return template.evaluate()
     .setTitle(Config.APP_NAME)
@@ -33,7 +50,12 @@ function renderPage(pageName) {
  * @return {string} Template content.
  */
 function include(filename) {
-  return HtmlService.createHtmlOutputFromFile(filename).getContent();
+  const template = HtmlService.createTemplateFromFile(filename);
+  template.appTitle = Config.APP_NAME;
+  template.appVersion = Config.APP_VERSION;
+  template.currentYear = new Date().getFullYear();
+
+  return template.evaluate().getContent();
 }
 
 /**
