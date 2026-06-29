@@ -1,0 +1,86 @@
+<section class="data-page" data-module="building">
+  <div class="page-heading page-heading--with-action">
+    <div>
+      <p class="eyebrow">Master Data</p>
+      <h1>Data Gedung</h1>
+      <p>Kelola data gedung Fakultas Ilmu Pendidikan sebagai master data untuk modul lokal.</p>
+    </div>
+  </div>
+
+  <section class="data-panel" id="buildingFormPanel" hidden>
+    <div class="panel-heading">
+      <div>
+        <p class="eyebrow">Form</p>
+        <h2 id="buildingFormTitle">Tambah Gedung</h2>
+      </div>
+    </div>
+
+    <form class="form-grid" id="buildingForm">
+      <input type="hidden" id="buildingId" name="id" />
+
+      <label class="field">
+        <span>Kode Gedung</span>
+        <input type="text" id="kodeGedung" name="kodeGedung" autocomplete="off" required />
+      </label>
+
+      <label class="field">
+        <span>Nama Gedung</span>
+        <input type="text" id="namaGedung" name="namaGedung" autocomplete="off" required />
+      </label>
+
+      <label class="field field--full">
+        <span>Alamat</span>
+        <input type="text" id="alamat" name="alamat" autocomplete="off" />
+      </label>
+
+      <label class="field field--full">
+        <span>Deskripsi</span>
+        <textarea id="deskripsi" name="deskripsi" rows="3"></textarea>
+      </label>
+
+      <label class="field">
+        <span>Status</span>
+        <select id="status" name="status" required>
+          <option value="Aktif">Aktif</option>
+          <option value="Tidak Aktif">Tidak Aktif</option>
+        </select>
+      </label>
+
+      <div class="form-actions field--full">
+        <button class="button button--primary" type="submit">Simpan</button>
+        <button class="button button--secondary" type="button" id="cancelBuildingForm">Batal</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="data-panel">
+    <div class="toolbar">
+      <button class="button button--primary" type="button" id="addBuildingButton">Tambah Gedung</button>
+      <label class="search-field">
+        <span class="sr-only">Cari gedung</span>
+        <input type="search" id="buildingSearch" placeholder="Cari kode atau nama gedung" />
+      </label>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Kode</th>
+            <th>Nama Gedung</th>
+            <th>Alamat</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="buildingTableBody">
+          <tr>
+            <td colspan="5">Memuat data gedung...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="toast" id="buildingToast" role="status" aria-live="polite" hidden></div>
+</section>

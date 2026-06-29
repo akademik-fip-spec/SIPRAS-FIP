@@ -10,7 +10,7 @@
   <body data-page="<?= currentPage ?>">
     <div class="app-shell">
       <?!= include('html/components/header'); ?>
-      <? if (currentPage === 'dashboard') { ?>
+      <? if (currentPage !== 'home') { ?>
         <div class="dashboard-shell">
           <?!= include('html/components/sidebar'); ?>
           <main class="app-main app-main--dashboard" id="main-content">

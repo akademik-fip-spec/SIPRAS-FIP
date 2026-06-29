@@ -1,7 +1,8 @@
 const SiprasRouter = {
   routes: {
     home: '?page=home',
-    dashboard: '?page=dashboard'
+    dashboard: '?page=dashboard',
+    building: '?page=building'
   },
 
   getRoute(page) {

@@ -54,4 +54,19 @@
   .site-footer__meta {
     text-align: left;
   }
+
+  .toolbar,
+  .page-heading--with-action,
+  .form-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .search-field {
+    width: 100%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -19,7 +19,7 @@ function doGet(e) {
  */
 function getRequestedPage(e) {
   const page = e && e.parameter && e.parameter.page ? e.parameter.page : Config.DEFAULT_PAGE;
-  const allowedPages = ['home', 'dashboard'];
+  const allowedPages = ['home', 'dashboard', 'building'];
 
   return allowedPages.indexOf(page) === -1 ? Config.DEFAULT_PAGE : page;
 }
@@ -54,6 +54,7 @@ function include(filename) {
   template.appTitle = Config.APP_NAME;
   template.appVersion = Config.APP_VERSION;
   template.currentYear = new Date().getFullYear();
+  template.currentPage = typeof currentPage === 'undefined' ? Config.DEFAULT_PAGE : currentPage;
 
   return template.evaluate().getContent();
 }
@@ -148,4 +149,54 @@ function updateDatabaseRecord(sheetKey, id, payload) {
  */
 function deleteDatabaseRecord(sheetKey, id) {
   return new BaseRepository(sheetKey).delete(id);
+}
+
+/**
+ * Gets active building records.
+ *
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function getBuildings() {
+  return new BuildingService().getBuildings();
+}
+
+/**
+ * Gets one building record.
+ *
+ * @param {string} id Building id.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function getBuilding(id) {
+  return new BuildingService().getBuilding(id);
+}
+
+/**
+ * Creates a building record.
+ *
+ * @param {Object} data Building payload.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function createBuilding(data) {
+  return new BuildingService().createBuilding(data);
+}
+
+/**
+ * Updates a building record.
+ *
+ * @param {string} id Building id.
+ * @param {Object} data Building payload.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function updateBuilding(id, data) {
+  return new BuildingService().updateBuilding(id, data);
+}
+
+/**
+ * Soft deletes a building record.
+ *
+ * @param {string} id Building id.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function deleteBuilding(id) {
+  return new BuildingService().deleteBuilding(id);
 }
