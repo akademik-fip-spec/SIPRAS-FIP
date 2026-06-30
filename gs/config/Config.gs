@@ -7,7 +7,7 @@ const Config = {
   APP_VERSION: '0.2.0',
   DEFAULT_PAGE: 'home',
   DATABASE: {
-    SPREADSHEET_ID: ''
+    SPREADSHEET_ID: '14mhlBjET1om9L3Tteum4ZxaJkSJmqwtoDXtYMCpQ8nI'
   },
   SHEETS: {
     USERS: {
@@ -53,6 +53,6 @@ const Config = {
     DELETED: 'Dihapus'
   },
   DRIVE: {
-    INSPECTION_PHOTO_FOLDER_ID: ''
+    INSPECTION_PHOTO_FOLDER_ID: '14npxjGykWYRiPUWw27OQweIXy6WVycKJ'
   }
 };
