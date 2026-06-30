@@ -1,0 +1,121 @@
+<section class="data-page" data-module="room">
+  <div class="page-heading page-heading--with-action">
+    <div>
+      <p class="eyebrow">Master Data</p>
+      <h1>Data Lokal</h1>
+      <p>Kelola data lokal atau ruangan yang terhubung dengan master Data Gedung.</p>
+    </div>
+  </div>
+
+  <section class="data-panel" id="roomFormPanel" hidden>
+    <div class="panel-heading">
+      <div>
+        <p class="eyebrow">Form</p>
+        <h2 id="roomFormTitle">Tambah Lokal</h2>
+      </div>
+    </div>
+
+    <form class="form-grid" id="roomForm">
+      <input type="hidden" id="roomId" name="id" />
+
+      <label class="field">
+        <span>Kode Lokal</span>
+        <input type="text" id="kodeLokal" name="kodeLokal" autocomplete="off" required />
+      </label>
+
+      <label class="field">
+        <span>Nama Lokal</span>
+        <input type="text" id="namaLokal" name="namaLokal" autocomplete="off" required />
+      </label>
+
+      <label class="field">
+        <span>Gedung</span>
+        <select id="gedungId" name="gedungId" required>
+          <option value="">Pilih Gedung</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Lantai</span>
+        <input type="text" id="lantai" name="lantai" autocomplete="off" />
+      </label>
+
+      <label class="field">
+        <span>Kapasitas</span>
+        <input type="number" id="kapasitas" name="kapasitas" min="1" step="1" required />
+      </label>
+
+      <label class="field">
+        <span>Jenis Lokal</span>
+        <select id="jenisLokal" name="jenisLokal">
+          <option value="Ruang Kelas">Ruang Kelas</option>
+          <option value="Laboratorium">Laboratorium</option>
+          <option value="Ruang Dosen">Ruang Dosen</option>
+          <option value="Ruang Administrasi">Ruang Administrasi</option>
+          <option value="Aula">Aula</option>
+          <option value="Ruang Rapat">Ruang Rapat</option>
+          <option value="Gudang">Gudang</option>
+          <option value="Lainnya">Lainnya</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Penanggung Jawab</span>
+        <input type="text" id="penanggungJawab" name="penanggungJawab" autocomplete="off" />
+      </label>
+
+      <label class="field">
+        <span>Status</span>
+        <select id="roomStatus" name="status" required>
+          <option value="Aktif">Aktif</option>
+          <option value="Tidak Aktif">Tidak Aktif</option>
+        </select>
+      </label>
+
+      <div class="form-actions field--full">
+        <button class="button button--primary" type="submit">Simpan</button>
+        <button class="button button--secondary" type="button" id="cancelRoomForm">Batal</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="data-panel">
+    <div class="toolbar toolbar--room">
+      <button class="button button--primary" type="button" id="addRoomButton">Tambah Lokal</button>
+      <label class="search-field">
+        <span class="sr-only">Cari lokal</span>
+        <input type="search" id="roomSearch" placeholder="Cari kode atau nama lokal" />
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter gedung</span>
+        <select id="buildingFilter">
+          <option value="">Semua Gedung</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table data-table--wide">
+        <thead>
+          <tr>
+            <th>Kode</th>
+            <th>Nama Lokal</th>
+            <th>Gedung</th>
+            <th>Lantai</th>
+            <th>Kapasitas</th>
+            <th>Jenis</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="roomTableBody">
+          <tr>
+            <td colspan="8">Memuat data lokal...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="toast" id="roomToast" role="status" aria-live="polite" hidden></div>
+</section>

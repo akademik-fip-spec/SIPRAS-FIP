@@ -19,7 +19,7 @@ function doGet(e) {
  */
 function getRequestedPage(e) {
   const page = e && e.parameter && e.parameter.page ? e.parameter.page : Config.DEFAULT_PAGE;
-  const allowedPages = ['home', 'dashboard', 'building'];
+  const allowedPages = ['home', 'dashboard', 'building', 'room'];
 
   return allowedPages.indexOf(page) === -1 ? Config.DEFAULT_PAGE : page;
 }
@@ -199,4 +199,54 @@ function updateBuilding(id, data) {
  */
 function deleteBuilding(id) {
   return new BuildingService().deleteBuilding(id);
+}
+
+/**
+ * Gets active room records.
+ *
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function getRooms() {
+  return new RoomService().getRooms();
+}
+
+/**
+ * Gets one room record.
+ *
+ * @param {string} id Room id.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function getRoom(id) {
+  return new RoomService().getRoom(id);
+}
+
+/**
+ * Creates a room record.
+ *
+ * @param {Object} data Room payload.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function createRoom(data) {
+  return new RoomService().createRoom(data);
+}
+
+/**
+ * Updates a room record.
+ *
+ * @param {string} id Room id.
+ * @param {Object} data Room payload.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function updateRoom(id, data) {
+  return new RoomService().updateRoom(id, data);
+}
+
+/**
+ * Soft deletes a room record.
+ *
+ * @param {string} id Room id.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function deleteRoom(id) {
+  return new RoomService().deleteRoom(id);
 }

@@ -46,10 +46,45 @@ function validateInList(value, allowedValues, fieldLabel) {
 }
 
 /**
+ * Validates that a value is numeric.
+ *
+ * @param {*} value Value to validate.
+ * @param {string} fieldLabel Field label.
+ * @return {?string} Validation message.
+ */
+function validateNumber(value, fieldLabel) {
+  try {
+    return isNaN(Number(value)) ? fieldLabel + ' harus berupa angka.' : null;
+  } catch (error) {
+    Logger.log(error);
+    throw error;
+  }
+}
+
+/**
+ * Validates that a numeric value is at least the minimum.
+ *
+ * @param {*} value Value to validate.
+ * @param {number} minimum Minimum value.
+ * @param {string} fieldLabel Field label.
+ * @return {?string} Validation message.
+ */
+function validateMinimumNumber(value, minimum, fieldLabel) {
+  try {
+    return Number(value) < minimum ? fieldLabel + ' minimal ' + minimum + '.' : null;
+  } catch (error) {
+    Logger.log(error);
+    throw error;
+  }
+}
+
+/**
  * Validation helper namespace.
  */
 const ValidationHelper = {
   isBlank: isBlank,
   required: validateRequired,
-  inList: validateInList
+  inList: validateInList,
+  number: validateNumber,
+  minNumber: validateMinimumNumber
 };
