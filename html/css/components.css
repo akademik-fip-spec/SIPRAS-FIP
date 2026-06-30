@@ -239,6 +239,125 @@ body[data-page="schedule"] .sidebar-nav__link[data-nav="schedule"],
   box-shadow: var(--shadow-soft);
 }
 
+.dashboard-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.dashboard-grid--stats {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.metric-card {
+  display: grid;
+  gap: 10px;
+  min-height: 118px;
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.metric-card span {
+  color: var(--color-muted);
+  font-weight: 700;
+}
+
+.metric-card strong {
+  color: var(--color-primary);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.condition-summary {
+  display: grid;
+  gap: 14px;
+}
+
+.condition-item {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.35fr) minmax(0, 1fr) 56px;
+  gap: 12px;
+  align-items: center;
+}
+
+.condition-item__meta {
+  display: grid;
+  gap: 4px;
+}
+
+.condition-item__meta span,
+.condition-item__percent {
+  color: var(--color-muted);
+  font-weight: 700;
+}
+
+.progress-bar {
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--color-surface-muted);
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-primary);
+}
+
+.activity-list {
+  display: grid;
+  gap: 12px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.activity-item:last-child {
+  border-bottom: 0;
+}
+
+.activity-item strong,
+.activity-item p,
+.activity-item time {
+  display: block;
+}
+
+.activity-item p {
+  margin: 4px 0 0;
+  color: var(--color-muted);
+}
+
+.activity-item__type {
+  display: inline-block;
+  margin-bottom: 6px;
+  color: var(--color-accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.activity-item__meta {
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+  min-width: 180px;
+}
+
+.activity-item__meta time {
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
 .panel-heading {
   display: flex;
   align-items: flex-start;

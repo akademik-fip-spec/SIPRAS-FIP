@@ -1,7 +1,8 @@
 @media (max-width: 900px) {
   .hero-grid,
   .section-grid,
-  .feature-grid {
+  .feature-grid,
+  .dashboard-grid--stats {
     grid-template-columns: 1fr;
   }
 
@@ -68,5 +69,23 @@
 
   .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .condition-item,
+  .activity-item {
+    grid-template-columns: 1fr;
+  }
+
+  .condition-item {
+    display: grid;
+  }
+
+  .activity-item {
+    display: grid;
+  }
+
+  .activity-item__meta {
+    justify-items: start;
+    min-width: 0;
   }
 }

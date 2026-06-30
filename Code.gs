@@ -460,3 +460,12 @@ function updateSchedule(id, data) {
 function deleteSchedule(id) {
   return new ScheduleService().deleteSchedule(id);
 }
+
+/**
+ * Gets dashboard summaries and operational data.
+ *
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function getDashboardData() {
+  return new DashboardService().getDashboardData();
+}

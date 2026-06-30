@@ -1,12 +1,120 @@
-<section class="dashboard-page">
+<section class="dashboard-page" data-module="dashboard">
   <div class="page-heading">
     <p class="eyebrow">Administrator</p>
     <h1>Dashboard SIPRAS-FIP</h1>
-    <p>Selamat datang di Dashboard SIPRAS-FIP. Modul akan dikembangkan pada task berikutnya.</p>
+    <p>Ringkasan operasional sarana dan prasarana Fakultas Ilmu Pendidikan berdasarkan data terbaru.</p>
   </div>
 
-  <div class="placeholder-panel">
-    <h2>Fondasi Dashboard</h2>
-    <p>Area ini disiapkan sebagai ruang utama pengembangan modul data gedung, lokal, fasilitas, inventaris, pemeriksaan, jadwal, pengguna, laporan, dan pengaturan.</p>
-  </div>
+  <section class="dashboard-section">
+    <div class="dashboard-grid dashboard-grid--stats" id="dashboardStats">
+      <article class="metric-card"><span>Total Gedung</span><strong>0</strong></article>
+      <article class="metric-card"><span>Total Lokal</span><strong>0</strong></article>
+      <article class="metric-card"><span>Total Fasilitas</span><strong>0</strong></article>
+      <article class="metric-card"><span>Total Inventaris</span><strong>0</strong></article>
+      <article class="metric-card"><span>Total Pemeriksaan</span><strong>0</strong></article>
+      <article class="metric-card"><span>Jadwal Hari Ini</span><strong>0</strong></article>
+    </div>
+  </section>
+
+  <section class="dashboard-section data-panel">
+    <div class="panel-heading">
+      <div>
+        <p class="eyebrow">Inventaris</p>
+        <h2>Ringkasan Kondisi Inventaris</h2>
+      </div>
+    </div>
+    <div class="condition-summary" id="inventoryConditionSummary">
+      <p>Memuat ringkasan kondisi...</p>
+    </div>
+  </section>
+
+  <section class="dashboard-section data-panel">
+    <div class="panel-heading">
+      <div>
+        <p class="eyebrow">Pemeriksaan</p>
+        <h2>Pemeriksaan Terbaru</h2>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table data-table--wide">
+        <thead>
+          <tr>
+            <th>Tanggal</th>
+            <th>Inventaris</th>
+            <th>Petugas</th>
+            <th>Kondisi</th>
+            <th>Tindakan</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="latestInspectionsBody">
+          <tr><td colspan="6">Memuat pemeriksaan terbaru...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="dashboard-section data-panel">
+    <div class="panel-heading">
+      <div>
+        <p class="eyebrow">Jadwal</p>
+        <h2>Jadwal Hari Ini</h2>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table data-table--wide">
+        <thead>
+          <tr>
+            <th>Jam</th>
+            <th>Lokal</th>
+            <th>Judul</th>
+            <th>Penanggung Jawab</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="todaySchedulesBody">
+          <tr><td colspan="5">Memuat jadwal hari ini...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="dashboard-section data-panel">
+    <div class="panel-heading">
+      <div>
+        <p class="eyebrow">Inventaris</p>
+        <h2>Inventaris Perlu Perhatian</h2>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table data-table--wide">
+        <thead>
+          <tr>
+            <th>Nomor Inventaris</th>
+            <th>Nama Barang</th>
+            <th>Lokal</th>
+            <th>Fasilitas</th>
+            <th>Kondisi</th>
+          </tr>
+        </thead>
+        <tbody id="attentionInventoriesBody">
+          <tr><td colspan="5">Memuat inventaris perlu perhatian...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="dashboard-section data-panel">
+    <div class="panel-heading">
+      <div>
+        <p class="eyebrow">Aktivitas</p>
+        <h2>Aktivitas Terbaru</h2>
+      </div>
+    </div>
+    <div class="activity-list" id="recentActivities">
+      <p>Memuat aktivitas terbaru...</p>
+    </div>
+  </section>
+
+  <div class="toast" id="dashboardToast" role="status" aria-live="polite" hidden></div>
 </section>
