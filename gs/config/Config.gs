@@ -6,6 +6,9 @@ const Config = {
   APP_NAME: 'SIPRAS-FIP',
   APP_VERSION: '0.2.0',
   DEFAULT_PAGE: 'home',
+  DATABASE: {
+    SPREADSHEET_ID: ''
+  },
   SHEETS: {
     USERS: {
       name: 'Users',

@@ -58,13 +58,19 @@ function resolveSheetConfig(sheetKey) {
 }
 
 /**
- * Gets the active spreadsheet.
+ * Gets the configured database spreadsheet.
  *
- * @return {GoogleAppsScript.Spreadsheet.Spreadsheet} Active spreadsheet.
+ * @return {GoogleAppsScript.Spreadsheet.Spreadsheet} Database spreadsheet.
  */
 function getActiveDatabase() {
   try {
-    return SpreadsheetApp.getActiveSpreadsheet();
+    const spreadsheetId = Config.DATABASE && Config.DATABASE.SPREADSHEET_ID;
+
+    if (ValidationHelper.isBlank(spreadsheetId)) {
+      throw new Error('Database Spreadsheet ID belum dikonfigurasi.');
+    }
+
+    return SpreadsheetApp.openById(spreadsheetId);
   } catch (error) {
     Logger.log(error);
     throw error;
