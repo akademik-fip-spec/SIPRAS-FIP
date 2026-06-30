@@ -1,0 +1,208 @@
+<section class="data-page" data-module="inspection">
+  <div class="page-heading page-heading--with-action">
+    <div>
+      <p class="eyebrow">Proses Bisnis</p>
+      <h1>Pemeriksaan</h1>
+      <p>Kelola pemeriksaan berkala sarana dan prasarana berdasarkan gedung, lokal, fasilitas, dan inventaris.</p>
+    </div>
+  </div>
+
+  <section class="data-panel" id="inspectionFormPanel" hidden>
+    <div class="panel-heading">
+      <div>
+        <p class="eyebrow">Form</p>
+        <h2 id="inspectionFormTitle">Tambah Pemeriksaan</h2>
+      </div>
+    </div>
+
+    <form class="form-grid" id="inspectionForm">
+      <input type="hidden" id="inspectionId" name="id" />
+      <input type="hidden" id="inspectionPhoto" name="foto" />
+
+      <label class="field">
+        <span>Nomor Pemeriksaan</span>
+        <input type="text" id="nomorPemeriksaan" name="nomorPemeriksaan" autocomplete="off" required />
+      </label>
+
+      <label class="field">
+        <span>Tanggal</span>
+        <input type="date" id="tanggalPemeriksaan" name="tanggalPemeriksaan" required />
+      </label>
+
+      <label class="field">
+        <span>Petugas</span>
+        <input type="text" id="petugas" name="petugas" autocomplete="off" required />
+      </label>
+
+      <label class="field">
+        <span>Gedung</span>
+        <select id="gedungId" name="gedungId" required>
+          <option value="">Pilih Gedung</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Lokal</span>
+        <select id="lokalId" name="lokalId" required>
+          <option value="">Pilih Lokal</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Fasilitas</span>
+        <select id="fasilitasId" name="fasilitasId" required>
+          <option value="">Pilih Fasilitas</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Inventaris</span>
+        <select id="inventarisId" name="inventarisId" required>
+          <option value="">Pilih Inventaris</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Kondisi</span>
+        <select id="kondisi" name="kondisi" required>
+          <option value="Sangat Baik">Sangat Baik</option>
+          <option value="Baik">Baik</option>
+          <option value="Cukup">Cukup</option>
+          <option value="Rusak Ringan">Rusak Ringan</option>
+          <option value="Rusak Berat">Rusak Berat</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Tindakan</span>
+        <select id="tindakan" name="tindakan" required>
+          <option value="Tidak Ada">Tidak Ada</option>
+          <option value="Perlu Perbaikan">Perlu Perbaikan</option>
+          <option value="Perlu Penggantian">Perlu Penggantian</option>
+          <option value="Perlu Pemeriksaan Lanjutan">Perlu Pemeriksaan Lanjutan</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Status</span>
+        <select id="inspectionStatus" name="status" required>
+          <option value="Draft">Draft</option>
+          <option value="Selesai">Selesai</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Upload Foto</span>
+        <input type="file" id="fotoUpload" name="fotoUpload" accept="image/*" />
+      </label>
+
+      <label class="field field--full">
+        <span>Catatan</span>
+        <textarea id="catatan" name="catatan" rows="3"></textarea>
+      </label>
+
+      <div class="form-actions field--full">
+        <button class="button button--primary" type="submit">Simpan</button>
+        <button class="button button--secondary" type="button" id="cancelInspectionForm">Batal</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="data-panel">
+    <div class="toolbar toolbar--room">
+      <button class="button button--primary" type="button" id="addInspectionButton">Tambah Pemeriksaan</button>
+      <label class="search-field">
+        <span class="sr-only">Cari pemeriksaan</span>
+        <input type="search" id="inspectionSearch" placeholder="Cari nomor, inventaris, lokal, atau petugas" />
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter gedung</span>
+        <select id="buildingFilter">
+          <option value="">Semua Gedung</option>
+        </select>
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter lokal</span>
+        <select id="roomFilter">
+          <option value="">Semua Lokal</option>
+        </select>
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter kondisi</span>
+        <select id="conditionFilter">
+          <option value="">Semua Kondisi</option>
+          <option value="Sangat Baik">Sangat Baik</option>
+          <option value="Baik">Baik</option>
+          <option value="Cukup">Cukup</option>
+          <option value="Rusak Ringan">Rusak Ringan</option>
+          <option value="Rusak Berat">Rusak Berat</option>
+        </select>
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter status</span>
+        <select id="statusFilter">
+          <option value="">Semua Status</option>
+          <option value="Draft">Draft</option>
+          <option value="Selesai">Selesai</option>
+        </select>
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter tanggal</span>
+        <input type="date" id="dateFilter" />
+      </label>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table data-table--wide">
+        <thead>
+          <tr>
+            <th>Nomor</th>
+            <th>Tanggal</th>
+            <th>Gedung</th>
+            <th>Lokal</th>
+            <th>Inventaris</th>
+            <th>Petugas</th>
+            <th>Kondisi</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="inspectionTableBody">
+          <tr>
+            <td colspan="9">Memuat data pemeriksaan...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="data-panel" id="historyPanel" hidden>
+    <div class="panel-heading">
+      <div>
+        <p class="eyebrow">Riwayat</p>
+        <h2 id="historyTitle">Riwayat Pemeriksaan</h2>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table data-table--wide">
+        <thead>
+          <tr>
+            <th>Nomor</th>
+            <th>Tanggal</th>
+            <th>Petugas</th>
+            <th>Kondisi</th>
+            <th>Tindakan</th>
+            <th>Foto</th>
+          </tr>
+        </thead>
+        <tbody id="historyTableBody">
+          <tr>
+            <td colspan="6">Pilih riwayat inventaris.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="toast" id="inspectionToast" role="status" aria-live="polite" hidden></div>
+</section>

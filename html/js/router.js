@@ -5,7 +5,8 @@ const SiprasRouter = {
     building: '?page=building',
     room: '?page=room',
     facility: '?page=facility',
-    inventory: '?page=inventory'
+    inventory: '?page=inventory',
+    inspection: '?page=inspection'
   },
 
   getRoute(page) {

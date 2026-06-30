@@ -19,7 +19,7 @@ function doGet(e) {
  */
 function getRequestedPage(e) {
   const page = e && e.parameter && e.parameter.page ? e.parameter.page : Config.DEFAULT_PAGE;
-  const allowedPages = ['home', 'dashboard', 'building', 'room', 'facility', 'inventory'];
+  const allowedPages = ['home', 'dashboard', 'building', 'room', 'facility', 'inventory', 'inspection'];
 
   return allowedPages.indexOf(page) === -1 ? Config.DEFAULT_PAGE : page;
 }
@@ -349,4 +349,64 @@ function updateInventory(id, data) {
  */
 function deleteInventory(id) {
   return new InventoryService().deleteInventory(id);
+}
+
+/**
+ * Gets inspection records.
+ *
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function getInspections() {
+  return new InspectionService().getInspections();
+}
+
+/**
+ * Gets one inspection record.
+ *
+ * @param {string} id Inspection id.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function getInspection(id) {
+  return new InspectionService().getInspection(id);
+}
+
+/**
+ * Gets inspection history by inventory id.
+ *
+ * @param {string} inventarisId Inventory id.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function getInspectionHistory(inventarisId) {
+  return new InspectionService().getInspectionHistory(inventarisId);
+}
+
+/**
+ * Creates an inspection record.
+ *
+ * @param {Object} data Inspection payload.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function createInspection(data) {
+  return new InspectionService().createInspection(data);
+}
+
+/**
+ * Updates an inspection record.
+ *
+ * @param {string} id Inspection id.
+ * @param {Object} data Inspection payload.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function updateInspection(id, data) {
+  return new InspectionService().updateInspection(id, data);
+}
+
+/**
+ * Soft deletes an inspection record.
+ *
+ * @param {string} id Inspection id.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function deleteInspection(id) {
+  return new InspectionService().deleteInspection(id);
 }

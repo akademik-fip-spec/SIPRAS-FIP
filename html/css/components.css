@@ -188,6 +188,7 @@ body[data-page="building"] .sidebar-nav__link[data-nav="building"],
 body[data-page="room"] .sidebar-nav__link[data-nav="room"],
 body[data-page="facility"] .sidebar-nav__link[data-nav="facility"],
 body[data-page="inventory"] .sidebar-nav__link[data-nav="inventory"],
+body[data-page="inspection"] .sidebar-nav__link[data-nav="inspection"],
 .sidebar-nav__link:hover {
   background: var(--color-primary-soft);
   color: var(--color-primary);

@@ -21,5 +21,8 @@ const Config = {
     ACTIVE: 'Aktif',
     INACTIVE: 'Tidak Aktif',
     DELETED: 'Dihapus'
+  },
+  DRIVE: {
+    INSPECTION_PHOTO_FOLDER_ID: ''
   }
 };
