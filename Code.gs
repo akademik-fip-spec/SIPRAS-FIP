@@ -19,7 +19,7 @@ function doGet(e) {
  */
 function getRequestedPage(e) {
   const page = e && e.parameter && e.parameter.page ? e.parameter.page : Config.DEFAULT_PAGE;
-  const allowedPages = ['home', 'dashboard', 'building', 'room', 'facility'];
+  const allowedPages = ['home', 'dashboard', 'building', 'room', 'facility', 'inventory'];
 
   return allowedPages.indexOf(page) === -1 ? Config.DEFAULT_PAGE : page;
 }
@@ -299,4 +299,54 @@ function updateFacility(id, data) {
  */
 function deleteFacility(id) {
   return new FacilityService().deleteFacility(id);
+}
+
+/**
+ * Gets active inventory records.
+ *
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function getInventories() {
+  return new InventoryService().getInventories();
+}
+
+/**
+ * Gets one inventory record.
+ *
+ * @param {string} id Inventory id.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function getInventory(id) {
+  return new InventoryService().getInventory(id);
+}
+
+/**
+ * Creates an inventory record.
+ *
+ * @param {Object} data Inventory payload.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function createInventory(data) {
+  return new InventoryService().createInventory(data);
+}
+
+/**
+ * Updates an inventory record.
+ *
+ * @param {string} id Inventory id.
+ * @param {Object} data Inventory payload.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function updateInventory(id, data) {
+  return new InventoryService().updateInventory(id, data);
+}
+
+/**
+ * Soft deletes an inventory record.
+ *
+ * @param {string} id Inventory id.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function deleteInventory(id) {
+  return new InventoryService().deleteInventory(id);
 }

@@ -1,0 +1,209 @@
+<section class="data-page" data-module="inventory">
+  <div class="page-heading page-heading--with-action">
+    <div>
+      <p class="eyebrow">Master Data</p>
+      <h1>Data Inventaris</h1>
+      <p>Kelola barang inventaris fakultas berdasarkan relasi gedung, lokal, dan fasilitas.</p>
+    </div>
+  </div>
+
+  <section class="data-panel" id="inventoryFormPanel" hidden>
+    <div class="panel-heading">
+      <div>
+        <p class="eyebrow">Form</p>
+        <h2 id="inventoryFormTitle">Tambah Inventaris</h2>
+      </div>
+    </div>
+
+    <form class="form-grid" id="inventoryForm">
+      <input type="hidden" id="inventoryId" name="id" />
+
+      <label class="field">
+        <span>Kode Inventaris</span>
+        <input type="text" id="kodeInventaris" name="kodeInventaris" autocomplete="off" required />
+      </label>
+
+      <label class="field">
+        <span>Nomor Inventaris</span>
+        <input type="text" id="nomorInventaris" name="nomorInventaris" autocomplete="off" required />
+      </label>
+
+      <label class="field">
+        <span>Nama Barang</span>
+        <input type="text" id="namaBarang" name="namaBarang" autocomplete="off" required />
+      </label>
+
+      <label class="field">
+        <span>Kategori</span>
+        <select id="kategori" name="kategori" required>
+          <option value="Furniture">Furniture</option>
+          <option value="Elektronik">Elektronik</option>
+          <option value="Pembelajaran">Pembelajaran</option>
+          <option value="Jaringan">Jaringan</option>
+          <option value="Keamanan">Keamanan</option>
+          <option value="Utilitas">Utilitas</option>
+          <option value="Lainnya">Lainnya</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Gedung</span>
+        <select id="gedungId" name="gedungId" required>
+          <option value="">Pilih Gedung</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Lokal</span>
+        <select id="lokalId" name="lokalId" required>
+          <option value="">Pilih Lokal</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Fasilitas</span>
+        <select id="fasilitasId" name="fasilitasId" required>
+          <option value="">Pilih Fasilitas</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Merk</span>
+        <input type="text" id="merk" name="merk" autocomplete="off" />
+      </label>
+
+      <label class="field">
+        <span>Tipe</span>
+        <input type="text" id="tipe" name="tipe" autocomplete="off" />
+      </label>
+
+      <label class="field">
+        <span>Tahun Pengadaan</span>
+        <input type="number" id="tahunPengadaan" name="tahunPengadaan" min="1900" step="1" />
+      </label>
+
+      <label class="field">
+        <span>Jumlah</span>
+        <input type="number" id="jumlah" name="jumlah" min="1" step="1" required />
+      </label>
+
+      <label class="field">
+        <span>Satuan</span>
+        <input type="text" id="satuan" name="satuan" autocomplete="off" placeholder="unit" />
+      </label>
+
+      <label class="field">
+        <span>Kondisi</span>
+        <select id="kondisi" name="kondisi" required>
+          <option value="Sangat Baik">Sangat Baik</option>
+          <option value="Baik">Baik</option>
+          <option value="Cukup">Cukup</option>
+          <option value="Rusak Ringan">Rusak Ringan</option>
+          <option value="Rusak Berat">Rusak Berat</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Sumber Dana</span>
+        <input type="text" id="sumberDana" name="sumberDana" autocomplete="off" />
+      </label>
+
+      <label class="field">
+        <span>Status</span>
+        <select id="inventoryStatus" name="status" required>
+          <option value="Aktif">Aktif</option>
+          <option value="Tidak Aktif">Tidak Aktif</option>
+        </select>
+      </label>
+
+      <label class="field field--full">
+        <span>Spesifikasi</span>
+        <textarea id="spesifikasi" name="spesifikasi" rows="3"></textarea>
+      </label>
+
+      <label class="field field--full">
+        <span>Keterangan</span>
+        <textarea id="keterangan" name="keterangan" rows="3"></textarea>
+      </label>
+
+      <div class="form-actions field--full">
+        <button class="button button--primary" type="submit">Simpan</button>
+        <button class="button button--secondary" type="button" id="cancelInventoryForm">Batal</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="data-panel">
+    <div class="toolbar toolbar--room">
+      <button class="button button--primary" type="button" id="addInventoryButton">Tambah Inventaris</button>
+      <label class="search-field">
+        <span class="sr-only">Cari inventaris</span>
+        <input type="search" id="inventorySearch" placeholder="Cari kode, nomor, atau nama barang" />
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter gedung</span>
+        <select id="buildingFilter">
+          <option value="">Semua Gedung</option>
+        </select>
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter lokal</span>
+        <select id="roomFilter">
+          <option value="">Semua Lokal</option>
+        </select>
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter fasilitas</span>
+        <select id="facilityFilter">
+          <option value="">Semua Fasilitas</option>
+        </select>
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter kondisi</span>
+        <select id="conditionFilter">
+          <option value="">Semua Kondisi</option>
+          <option value="Sangat Baik">Sangat Baik</option>
+          <option value="Baik">Baik</option>
+          <option value="Cukup">Cukup</option>
+          <option value="Rusak Ringan">Rusak Ringan</option>
+          <option value="Rusak Berat">Rusak Berat</option>
+        </select>
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter status</span>
+        <select id="statusFilter">
+          <option value="">Semua Status</option>
+          <option value="Aktif">Aktif</option>
+          <option value="Tidak Aktif">Tidak Aktif</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table data-table--wide">
+        <thead>
+          <tr>
+            <th>Kode</th>
+            <th>Nomor Inventaris</th>
+            <th>Nama Barang</th>
+            <th>Gedung</th>
+            <th>Lokal</th>
+            <th>Fasilitas</th>
+            <th>Merk</th>
+            <th>Jumlah</th>
+            <th>Kondisi</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="inventoryTableBody">
+          <tr>
+            <td colspan="11">Memuat data inventaris...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="toast" id="inventoryToast" role="status" aria-live="polite" hidden></div>
+</section>
