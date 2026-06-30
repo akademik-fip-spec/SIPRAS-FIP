@@ -19,7 +19,7 @@ function doGet(e) {
  */
 function getRequestedPage(e) {
   const page = e && e.parameter && e.parameter.page ? e.parameter.page : Config.DEFAULT_PAGE;
-  const allowedPages = ['home', 'dashboard', 'building', 'room'];
+  const allowedPages = ['home', 'dashboard', 'building', 'room', 'facility'];
 
   return allowedPages.indexOf(page) === -1 ? Config.DEFAULT_PAGE : page;
 }
@@ -249,4 +249,54 @@ function updateRoom(id, data) {
  */
 function deleteRoom(id) {
   return new RoomService().deleteRoom(id);
+}
+
+/**
+ * Gets active facility records.
+ *
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function getFacilities() {
+  return new FacilityService().getFacilities();
+}
+
+/**
+ * Gets one facility record.
+ *
+ * @param {string} id Facility id.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function getFacility(id) {
+  return new FacilityService().getFacility(id);
+}
+
+/**
+ * Creates a facility record.
+ *
+ * @param {Object} data Facility payload.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function createFacility(data) {
+  return new FacilityService().createFacility(data);
+}
+
+/**
+ * Updates a facility record.
+ *
+ * @param {string} id Facility id.
+ * @param {Object} data Facility payload.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function updateFacility(id, data) {
+  return new FacilityService().updateFacility(id, data);
+}
+
+/**
+ * Soft deletes a facility record.
+ *
+ * @param {string} id Facility id.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function deleteFacility(id) {
+  return new FacilityService().deleteFacility(id);
 }

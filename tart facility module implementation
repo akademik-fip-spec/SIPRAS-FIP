@@ -1,0 +1,68 @@
+warning: in the working copy of 'Code.gs', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/Code.gs b/Code.gs[m
+[1mindex a218744..a0d8d9d 100644[m
+[1m--- a/Code.gs[m
+[1m+++ b/Code.gs[m
+[36m@@ -19,7 +19,7 @@[m [mfunction doGet(e) {[m
+  */[m
+ function getRequestedPage(e) {[m
+   const page = e && e.parameter && e.parameter.page ? e.parameter.page : Config.DEFAULT_PAGE;[m
+[31m-  const allowedPages = ['home', 'dashboard', 'building', 'room'];[m
+[32m+[m[32m  const allowedPages = ['home', 'dashboard', 'building', 'room', 'facility'];[m
+ [m
+   return allowedPages.indexOf(page) === -1 ? Config.DEFAULT_PAGE : page;[m
+ }[m
+[36m@@ -250,3 +250,53 @@[m [mfunction updateRoom(id, data) {[m
+ function deleteRoom(id) {[m
+   return new RoomService().deleteRoom(id);[m
+ }[m
+[32m+[m
+[32m+[m[32m/**[m
+[32m+[m[32m * Gets active facility records.[m
+[32m+[m[32m *[m
+[32m+[m[32m * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.[m
+[32m+[m[32m */[m
+[32m+[m[32mfunction getFacilities() {[m
+[32m+[m[32m  return new FacilityService().getFacilities();[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/**[m
+[32m+[m[32m * Gets one facility record.[m
+[32m+[m[32m *[m
+[32m+[m[32m * @param {string} id Facility id.[m
+[32m+[m[32m * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.[m
+[32m+[m[32m */[m
+[32m+[m[32mfunction getFacility(id) {[m
+[32m+[m[32m  return new FacilityService().getFacility(id);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/**[m
+[32m+[m[32m * Creates a facility record.[m
+[32m+[m[32m *[m
+[32m+[m[32m * @param {Object} data Facility payload.[m
+[32m+[m[32m * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.[m
+[32m+[m[32m */[m
+[32m+[m[32mfunction createFacility(data) {[m
+[32m+[m[32m  return new FacilityService().createFacility(data);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/**[m
+[32m+[m[32m * Updates a facility record.[m
+[32m+[m[32m *[m
+[32m+[m[32m * @param {string} id Facility id.[m
+[32m+[m[32m * @param {Object} data Facility payload.[m
+[32m+[m[32m * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.[m
+[32m+[m[32m */[m
+[32m+[m[32mfunction updateFacility(id, data) {[m
+[32m+[m[32m  return new FacilityService().updateFacility(id, data);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/**[m
+[32m+[m[32m * Soft deletes a facility record.[m
+[32m+[m[32m *[m
+[32m+[m[32m * @param {string} id Facility id.[m
+[32m+[m[32m * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.[m
+[32m+[m[32m */[m
+[32m+[m[32mfunction deleteFacility(id) {[m
+[32m+[m[32m  return new FacilityService().deleteFacility(id);[m
+[32m+[m[32m}[m
