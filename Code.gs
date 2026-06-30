@@ -19,7 +19,7 @@ function doGet(e) {
  */
 function getRequestedPage(e) {
   const page = e && e.parameter && e.parameter.page ? e.parameter.page : Config.DEFAULT_PAGE;
-  const allowedPages = ['home', 'dashboard', 'building', 'room', 'facility', 'inventory', 'inspection'];
+  const allowedPages = ['home', 'dashboard', 'building', 'room', 'facility', 'inventory', 'inspection', 'schedule'];
 
   return allowedPages.indexOf(page) === -1 ? Config.DEFAULT_PAGE : page;
 }
@@ -409,4 +409,54 @@ function updateInspection(id, data) {
  */
 function deleteInspection(id) {
   return new InspectionService().deleteInspection(id);
+}
+
+/**
+ * Gets schedule records.
+ *
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function getSchedules() {
+  return new ScheduleService().getSchedules();
+}
+
+/**
+ * Gets one schedule record.
+ *
+ * @param {string} id Schedule id.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function getSchedule(id) {
+  return new ScheduleService().getSchedule(id);
+}
+
+/**
+ * Creates a schedule record.
+ *
+ * @param {Object} data Schedule payload.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function createSchedule(data) {
+  return new ScheduleService().createSchedule(data);
+}
+
+/**
+ * Updates a schedule record.
+ *
+ * @param {string} id Schedule id.
+ * @param {Object} data Schedule payload.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function updateSchedule(id, data) {
+  return new ScheduleService().updateSchedule(id, data);
+}
+
+/**
+ * Soft deletes a schedule record.
+ *
+ * @param {string} id Schedule id.
+ * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
+ */
+function deleteSchedule(id) {
+  return new ScheduleService().deleteSchedule(id);
 }

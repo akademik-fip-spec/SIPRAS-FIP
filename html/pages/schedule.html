@@ -1,0 +1,181 @@
+<section class="data-page" data-module="schedule">
+  <div class="page-heading page-heading--with-action">
+    <div>
+      <p class="eyebrow">Operasional Lokal</p>
+      <h1>Jadwal Penggunaan Lokal</h1>
+      <p>Kelola jadwal penggunaan ruangan dan cegah benturan pemakaian lokal pada tanggal dan jam yang sama.</p>
+    </div>
+  </div>
+
+  <section class="data-panel" id="scheduleFormPanel" hidden>
+    <div class="panel-heading">
+      <div>
+        <p class="eyebrow">Form</p>
+        <h2 id="scheduleFormTitle">Tambah Jadwal</h2>
+      </div>
+    </div>
+
+    <form class="form-grid" id="scheduleForm">
+      <input type="hidden" id="scheduleId" name="id" />
+
+      <label class="field">
+        <span>Kode Jadwal</span>
+        <input type="text" id="kodeJadwal" name="kodeJadwal" autocomplete="off" required />
+      </label>
+
+      <label class="field">
+        <span>Judul Kegiatan</span>
+        <input type="text" id="judulKegiatan" name="judulKegiatan" autocomplete="off" required />
+      </label>
+
+      <label class="field">
+        <span>Jenis Kegiatan</span>
+        <select id="jenisKegiatan" name="jenisKegiatan" required>
+          <option value="Perkuliahan">Perkuliahan</option>
+          <option value="Seminar">Seminar</option>
+          <option value="Workshop">Workshop</option>
+          <option value="Rapat">Rapat</option>
+          <option value="Ujian">Ujian</option>
+          <option value="Praktikum">Praktikum</option>
+          <option value="Kegiatan Fakultas">Kegiatan Fakultas</option>
+          <option value="Lainnya">Lainnya</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Gedung</span>
+        <select id="gedungId" name="gedungId" required>
+          <option value="">Pilih Gedung</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Lokal</span>
+        <select id="lokalId" name="lokalId" required>
+          <option value="">Pilih Lokal</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Penanggung Jawab</span>
+        <input type="text" id="penanggungJawab" name="penanggungJawab" autocomplete="off" />
+      </label>
+
+      <label class="field">
+        <span>Tanggal</span>
+        <input type="date" id="tanggal" name="tanggal" required />
+      </label>
+
+      <label class="field">
+        <span>Jam Mulai</span>
+        <input type="time" id="jamMulai" name="jamMulai" required />
+      </label>
+
+      <label class="field">
+        <span>Jam Selesai</span>
+        <input type="time" id="jamSelesai" name="jamSelesai" required />
+      </label>
+
+      <label class="field">
+        <span>Jumlah Peserta</span>
+        <input type="number" id="jumlahPeserta" name="jumlahPeserta" min="1" step="1" required />
+      </label>
+
+      <label class="field">
+        <span>Status</span>
+        <select id="scheduleStatus" name="status" required>
+          <option value="Terjadwal">Terjadwal</option>
+          <option value="Berlangsung">Berlangsung</option>
+          <option value="Selesai">Selesai</option>
+          <option value="Dibatalkan">Dibatalkan</option>
+        </select>
+      </label>
+
+      <label class="field field--full">
+        <span>Keterangan</span>
+        <textarea id="keterangan" name="keterangan" rows="3"></textarea>
+      </label>
+
+      <div class="form-actions field--full">
+        <button class="button button--primary" type="submit">Simpan</button>
+        <button class="button button--secondary" type="button" id="cancelScheduleForm">Batal</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="data-panel">
+    <div class="toolbar toolbar--room">
+      <button class="button button--primary" type="button" id="addScheduleButton">Tambah Jadwal</button>
+      <label class="search-field">
+        <span class="sr-only">Cari jadwal</span>
+        <input type="search" id="scheduleSearch" placeholder="Cari kode, judul, atau penanggung jawab" />
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter gedung</span>
+        <select id="buildingFilter">
+          <option value="">Semua Gedung</option>
+        </select>
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter lokal</span>
+        <select id="roomFilter">
+          <option value="">Semua Lokal</option>
+        </select>
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter jenis kegiatan</span>
+        <select id="typeFilter">
+          <option value="">Semua Jenis</option>
+          <option value="Perkuliahan">Perkuliahan</option>
+          <option value="Seminar">Seminar</option>
+          <option value="Workshop">Workshop</option>
+          <option value="Rapat">Rapat</option>
+          <option value="Ujian">Ujian</option>
+          <option value="Praktikum">Praktikum</option>
+          <option value="Kegiatan Fakultas">Kegiatan Fakultas</option>
+          <option value="Lainnya">Lainnya</option>
+        </select>
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter status</span>
+        <select id="statusFilter">
+          <option value="">Semua Status</option>
+          <option value="Terjadwal">Terjadwal</option>
+          <option value="Berlangsung">Berlangsung</option>
+          <option value="Selesai">Selesai</option>
+          <option value="Dibatalkan">Dibatalkan</option>
+        </select>
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter tanggal</span>
+        <input type="date" id="dateFilter" />
+      </label>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table data-table--wide">
+        <thead>
+          <tr>
+            <th>Kode</th>
+            <th>Tanggal</th>
+            <th>Jam</th>
+            <th>Gedung</th>
+            <th>Lokal</th>
+            <th>Judul</th>
+            <th>Jenis</th>
+            <th>Penanggung Jawab</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="scheduleTableBody">
+          <tr>
+            <td colspan="10">Memuat data jadwal...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="toast" id="scheduleToast" role="status" aria-live="polite" hidden></div>
+</section>
