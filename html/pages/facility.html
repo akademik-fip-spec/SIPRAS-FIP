@@ -1,0 +1,155 @@
+<section class="data-page" data-module="facility">
+  <div class="page-heading page-heading--with-action">
+    <div>
+      <p class="eyebrow">Master Data</p>
+      <h1>Data Fasilitas</h1>
+      <p>Kelola fasilitas yang tersedia pada setiap lokal beserta kategori, jumlah, dan kondisi terakhir.</p>
+    </div>
+  </div>
+
+  <section class="data-panel" id="facilityFormPanel" hidden>
+    <div class="panel-heading">
+      <div>
+        <p class="eyebrow">Form</p>
+        <h2 id="facilityFormTitle">Tambah Fasilitas</h2>
+      </div>
+    </div>
+
+    <form class="form-grid" id="facilityForm">
+      <input type="hidden" id="facilityId" name="id" />
+
+      <label class="field">
+        <span>Kode Fasilitas</span>
+        <input type="text" id="kodeFasilitas" name="kodeFasilitas" autocomplete="off" required />
+      </label>
+
+      <label class="field">
+        <span>Nama Fasilitas</span>
+        <input type="text" id="namaFasilitas" name="namaFasilitas" autocomplete="off" required />
+      </label>
+
+      <label class="field">
+        <span>Kategori</span>
+        <select id="kategori" name="kategori" required>
+          <option value="Furniture">Furniture</option>
+          <option value="Elektronik">Elektronik</option>
+          <option value="Pembelajaran">Pembelajaran</option>
+          <option value="Jaringan">Jaringan</option>
+          <option value="Keamanan">Keamanan</option>
+          <option value="Utilitas">Utilitas</option>
+          <option value="Lainnya">Lainnya</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Gedung</span>
+        <input type="hidden" id="gedungId" name="gedungId" />
+        <input type="text" id="gedungNama" name="gedungNama" autocomplete="off" readonly />
+      </label>
+
+      <label class="field">
+        <span>Lokal</span>
+        <select id="lokalId" name="lokalId" required>
+          <option value="">Pilih Lokal</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Jumlah</span>
+        <input type="number" id="jumlah" name="jumlah" min="1" step="1" required />
+      </label>
+
+      <label class="field">
+        <span>Satuan</span>
+        <input type="text" id="satuan" name="satuan" autocomplete="off" placeholder="unit" />
+      </label>
+
+      <label class="field">
+        <span>Kondisi</span>
+        <select id="kondisi" name="kondisi" required>
+          <option value="Sangat Baik">Sangat Baik</option>
+          <option value="Baik">Baik</option>
+          <option value="Cukup">Cukup</option>
+          <option value="Rusak Ringan">Rusak Ringan</option>
+          <option value="Rusak Berat">Rusak Berat</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Status</span>
+        <select id="facilityStatus" name="status" required>
+          <option value="Aktif">Aktif</option>
+          <option value="Tidak Aktif">Tidak Aktif</option>
+        </select>
+      </label>
+
+      <label class="field field--full">
+        <span>Keterangan</span>
+        <textarea id="keterangan" name="keterangan" rows="3"></textarea>
+      </label>
+
+      <div class="form-actions field--full">
+        <button class="button button--primary" type="submit">Simpan</button>
+        <button class="button button--secondary" type="button" id="cancelFacilityForm">Batal</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="data-panel">
+    <div class="toolbar toolbar--room">
+      <button class="button button--primary" type="button" id="addFacilityButton">Tambah Fasilitas</button>
+      <label class="search-field">
+        <span class="sr-only">Cari fasilitas</span>
+        <input type="search" id="facilitySearch" placeholder="Cari kode atau nama fasilitas" />
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter gedung</span>
+        <select id="buildingFilter">
+          <option value="">Semua Gedung</option>
+        </select>
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter lokal</span>
+        <select id="roomFilter">
+          <option value="">Semua Lokal</option>
+        </select>
+      </label>
+      <label class="search-field">
+        <span class="sr-only">Filter kondisi</span>
+        <select id="conditionFilter">
+          <option value="">Semua Kondisi</option>
+          <option value="Sangat Baik">Sangat Baik</option>
+          <option value="Baik">Baik</option>
+          <option value="Cukup">Cukup</option>
+          <option value="Rusak Ringan">Rusak Ringan</option>
+          <option value="Rusak Berat">Rusak Berat</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table data-table--wide">
+        <thead>
+          <tr>
+            <th>Kode</th>
+            <th>Nama</th>
+            <th>Kategori</th>
+            <th>Gedung</th>
+            <th>Lokal</th>
+            <th>Jumlah</th>
+            <th>Kondisi</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="facilityTableBody">
+          <tr>
+            <td colspan="9">Memuat data fasilitas...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="toast" id="facilityToast" role="status" aria-live="polite" hidden></div>
+</section>

@@ -187,7 +187,7 @@ class FacilityService {
    * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
    */
   validatePayload(payload) {
-    const errors = ValidationHelper.required(payload, ['kodeFasilitas', 'namaFasilitas', 'kategori', 'lokalId']);
+    const errors = ValidationHelper.required(payload, ['kodeFasilitas', 'namaFasilitas', 'kategori', 'lokalId', 'jumlah', 'kondisi', 'status']);
     const amountNumberError = ValidationHelper.number(payload.jumlah, 'Jumlah');
     const amountMinimumError = amountNumberError ? null : ValidationHelper.minNumber(payload.jumlah, 1, 'Jumlah');
     const categoryError = ValidationHelper.inList(payload.kategori, this.validCategories, 'Kategori');
