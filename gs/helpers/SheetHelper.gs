@@ -6,19 +6,51 @@
  */
 function resolveSheetName(sheetKey) {
   try {
-    if (Config.SHEETS[sheetKey]) {
-      return Config.SHEETS[sheetKey];
+    const directConfig = Config.SHEETS[sheetKey];
+
+    if (directConfig) {
+      return typeof directConfig === 'string' ? directConfig : directConfig.name;
     }
 
     const matchedKey = Object.keys(Config.SHEETS).find(function (key) {
-      return Config.SHEETS[key] === sheetKey;
+      const sheetConfig = Config.SHEETS[key];
+      const sheetName = typeof sheetConfig === 'string' ? sheetConfig : sheetConfig.name;
+      return sheetName === sheetKey;
     });
 
     if (matchedKey) {
-      return Config.SHEETS[matchedKey];
+      return resolveSheetName(matchedKey);
     }
 
     throw new Error('Sheet tidak terdaftar di Config.');
+  } catch (error) {
+    Logger.log(error);
+    throw error;
+  }
+}
+
+/**
+ * Resolves a configured sheet key into its sheet config.
+ *
+ * @param {string} sheetKey Key from Config.SHEETS.
+ * @return {{name: string, headers: string[]}} Sheet config.
+ */
+function resolveSheetConfig(sheetKey) {
+  try {
+    const directConfig = Config.SHEETS[sheetKey];
+
+    if (directConfig) {
+      return typeof directConfig === 'string'
+        ? { name: directConfig, headers: ['id'] }
+        : directConfig;
+    }
+
+    const sheetName = resolveSheetName(sheetKey);
+    const matchedKey = Object.keys(Config.SHEETS).find(function (key) {
+      return resolveSheetName(key) === sheetName;
+    });
+
+    return matchedKey ? resolveSheetConfig(matchedKey) : { name: sheetName, headers: ['id'] };
   } catch (error) {
     Logger.log(error);
     throw error;
@@ -108,8 +140,12 @@ function getHeaders(sheet) {
  */
 function ensureHeaders(sheet, record) {
   try {
-    const requiredHeaders = ['id'].concat(Object.keys(record || {}).filter(function (key) {
+    const configuredHeaders = getConfiguredHeadersBySheetName(sheet.getName());
+    const recordHeaders = Object.keys(record || {}).filter(function (key) {
       return key !== 'id';
+    });
+    const requiredHeaders = configuredHeaders.concat(recordHeaders.filter(function (header) {
+      return configuredHeaders.indexOf(header) === -1;
     }));
     let headers = getHeaders(sheet);
 
@@ -132,6 +168,25 @@ function ensureHeaders(sheet, record) {
     Logger.log(error);
     throw error;
   }
+}
+
+/**
+ * Gets configured headers by physical sheet name.
+ *
+ * @param {string} sheetName Sheet name.
+ * @return {string[]} Configured headers.
+ */
+function getConfiguredHeadersBySheetName(sheetName) {
+  const matchedKey = Object.keys(Config.SHEETS).find(function (key) {
+    return resolveSheetName(key) === sheetName;
+  });
+
+  if (!matchedKey) {
+    return ['id'];
+  }
+
+  const sheetConfig = resolveSheetConfig(matchedKey);
+  return sheetConfig.headers && sheetConfig.headers.length > 0 ? sheetConfig.headers.slice() : ['id'];
 }
 
 /**
@@ -346,6 +401,7 @@ function deleteRecord(sheetKey, id) {
  */
 const SheetHelper = {
   getSheet: getSheet,
+  getConfig: resolveSheetConfig,
   getAll: getAll,
   getById: getById,
   insert: insert,

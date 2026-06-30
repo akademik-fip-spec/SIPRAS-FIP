@@ -65,26 +65,7 @@ function include(filename) {
  * @return {{success: boolean, message: string, data: *}|{success: boolean, message: string, error: string}} Standard response.
  */
 function initializeDatabase() {
-  try {
-    const sheets = Object.keys(Config.SHEETS).map(function (sheetKey) {
-      const sheet = SheetHelper.getSheet(sheetKey);
-
-      if (sheet.getLastRow() === 0) {
-        sheet.getRange(1, 1, 1, 1).setValues([['id']]);
-      }
-
-      return {
-        key: sheetKey,
-        name: Config.SHEETS[sheetKey],
-        lastRow: sheet.getLastRow()
-      };
-    });
-
-    return ResponseHelper.success('Database siap digunakan.', sheets);
-  } catch (error) {
-    Logger.log(error);
-    return ResponseHelper.error('Gagal menyiapkan database.', error);
-  }
+  return new DatabaseInstallerService().initializeDatabase();
 }
 
 /**
